@@ -6,8 +6,38 @@
 
 import random
 
-NUM_DIGITS = 3
-MAX_GUESSES = 10
+NUM_DIGITS = 4
+MAX_GUESSES = 20
+
+
+
+def getSecretNum():
+    secretNum =''
+    numbers = [i for i in range(10)]
+    random.shuffle(numbers)
+    for i in range(NUM_DIGITS):
+        secretNum = secretNum+str(numbers[i])
+    return secretNum
+
+
+
+def getClues(guess, secretNum):
+    if guess == secretNum:
+        return 'You got it!'
+    
+    clues = []
+
+    for i in range(len(guess)):
+        if guess[i] == secretNum[i]:
+            clues.append(' Fermi')
+        elif guess[i] in secretNum:
+            clues.append(' Pico')
+    
+    if len(clues) == 0:
+        return 'Bagels'
+    
+    clues.sort
+    return ''.join(clues)
 
 def main():
     print(f'''Welcome to Bagels!
@@ -55,28 +85,8 @@ def main():
 
 
 
-def getSecretNum():
-    numbers = [i for i in range(10)]
-    random.shuffle(numbers)
-    for i in range(NUM_DIGITS):
-        secretNum = secretNum+numbers[i]
-    return secretNum
 
 
-def getClues(guess, secretNum):
-    if guess == secretNum:
-        return 'You got it!'
-    
-    clues = []
 
-    for i in range(len(guess)):
-        if guess[i] == secretNum[i]:
-            clues.append['Fermi']
-        elif guess[i] in secretNum:
-            clues.append['Pico']
-    
-    if len(clues) == 0:
-        return 'Bagels'
-    
-    clues.sort
-    return ''.join(clues)
+if __name__ == '__main__':
+    main()
