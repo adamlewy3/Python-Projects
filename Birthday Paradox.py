@@ -23,12 +23,15 @@ def birthdaygen(numofBirthdays):
 #Define a function that will determine whether two birthdays are the same:
 
 def getMatch(birthdays):
-    for i in len(birthdays):
-        for j in len(birthdays):
+    for i in enumerate(birthdays):
+        for j in enumerate(birthdays):
             if birthdays[i] == birthdays[j]:
                 return birthdays[i]
             else:
                 return 'No birthdays match.'
+            
+
+print(getMatch(birthdaygen(23)))
             
     
         
